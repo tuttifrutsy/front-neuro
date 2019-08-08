@@ -1,29 +1,17 @@
-<template>
-  <!-- eslint-disable -->
-  <div>
-    <!-- <b-dropdown
-    split
-    split-variant="outline-primary"
-    variant="primary"
-    text="Split Variant Dropdown"
-    class="m-2"
-  >
-    <b-dropdown-item href="#">Action</b-dropdown-item>
-    <b-dropdown-item href="#">Another action</b-dropdown-item>
-    <b-dropdown-item href="#">Something else here...</b-dropdown-item>
-  </b-dropdown> -->
 
+  <!-- eslint-disable -->
+  <!-- <div>
 <div class="container">
   <div>
     <h4>Bienvenido</h4>
     <b-card-group deck>
-      <b-card img-src="http://mundoenpositivo.com/wp-content/uploads/2018/08/ejercicio.jpg" img-alt="Card image" img-top>
+      <b-card  img-src="http://mundoenpositivo.com/wp-content/uploads/2018/08/ejercicio.jpg" img-alt="Card image" img-top >
         <b-card-text>
          Hacer ejercicio en la mediana edad puede mejorar la función cerebral más adelante en la vida
         </b-card-text>
       </b-card>
 
-      <b-card img-src="https://as.com/deporteyvida/imagenes/2018/10/09/portada/1539102690_098224_1539103461_noticia_normal.jpg" img-alt="Card image" img-bottom>
+      <b-card class="small-img" img-src="https://as.com/deporteyvida/imagenes/2018/10/09/portada/1539102690_098224_1539103461_noticia_normal.jpg" img-alt="Card image" img-bottom>
         <b-card-text>
           Una alimentación saludable ayuda a mantener el cerebro en forma
         </b-card-text>
@@ -50,7 +38,7 @@
       </b-card-text>
     </b-card>
   </div>
-</div>
+</div> -->
 
     <!-- <span>Nombre:</span>
 <p style="white-space: pre-line;">{{ profile.name }}</p>
@@ -86,8 +74,8 @@
 <input v-model="profile.addres1" placeholder="Calle y número"/><br>
 <input v-model="profile.addres2" placeholder="Colonia"/><br>
 <button type="submit">Guardar Datos</button> -->
-  </div>
-</template>
+  <!-- </div>
+</template> -->
 <script>
 /* eslint-disable */
 class Profile {
@@ -137,3 +125,14 @@ export default {
  }
 
 </script>
+<style scoped>
+img{
+  height: 150Px;
+  width: 220px;
+}
+
+.card{
+  width: 0%;
+}
+
+</style>

@@ -16,7 +16,7 @@ Vue.use(BootstrapVue)
 /* eslint-disable no-new */
 Vue.use(VueGoogleMaps, {
   load: {
-    key: process.env.KEY,
+    key: 'AIzaSyAjgQtR0dr9sK2D6vbqqoL4Uuj09NIU7CE',
     libraries: 'places' // necessary for places input
   }
 })

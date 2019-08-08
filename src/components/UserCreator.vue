@@ -2,7 +2,8 @@
   <!-- eslint-disable -->
   <div class="container">
     <!-- Tabs with card integration -->
-    <b-card no-body class="info">
+    <form method="POST" v-on:submit.prevent="sendUser">
+       <b-card no-body class="info">
       <b-tabs v-model="tabIndex" small card>
         <b-tab title="Datos" class="font">
           <span>Nombre: {{user.name}}</span>
@@ -37,16 +38,16 @@
           <label for="other">Otros</label>
         </b-tab>
         <b-tab title="Contacto">
-          Datos de Contacto
-          <span>Email: {{user.firstname}}</span>
+          Datos de Contacto <br>
+          <span>Email: {{user.email}}</span>
           <br />
-          <span>Número Movil: {{user.lastname}}</span>
+          <span>Número Movil: {{user.phone}}</span>
           <input
             type="email"
             name="email"
             required
             placeholder="email@algo.com"
-            v-model="user.mail"
+            v-model="user.email"
           />
           <input type="text" name="phone" placeholder="55-00-00-00-00" v-model="user.phone" />
         </b-tab>
@@ -61,7 +62,7 @@
           <span>Contraseña: {{pwd}}</span>
         </b-tab>
         <b-tab title="Crear">
-          <b-button>Registrar Paciente</b-button>
+          <b-button type="submit">Registrar Paciente</b-button>
         </b-tab>
       </b-tabs>
       <b-button-group class="mt-2">
@@ -69,6 +70,10 @@
         <b-button @click="tabIndex++">Next</b-button>
       </b-button-group>
     </b-card>
+    </form>
+   
+
+
   </div>
 </template>
 <script>
@@ -116,7 +121,7 @@ export default {
       this.pwd = pwd;
     },
     sendUser() {
-      fetch('http://localhost:3000/singup', {
+      fetch('http://localhost:3000/signup', {
         method: 'POST',
         body: JSON.stringify(this.user),
         headers:{
@@ -127,7 +132,8 @@ export default {
       .then( res => res.json())
       .then(data => console.log(data));
       this.user = new User ();
-      this.$router.replace({name:'Home'});
+      sweetalert('Succces', 'To-do Created!', 'success')
+       this.$router.replace({name:'Admin'});
     }
   }
 };
@@ -154,6 +160,7 @@ input {
   padding: 0.375rem 0.75rem;
   border: solid 2px #194350;
   margin-top: 5%;
+  color: black;
 }
 
 .btn {

@@ -9,7 +9,7 @@
         <b-card-text>Programa tus citas fácilmente.</b-card-text>
       </b-card>
       <b-card bg-variant="secondary" header="Ubicanos" class="text-cente white">
-        <router-link to='/maps'><i class='far fa-hospital' style="font-size:30px;"></i></router-link>
+        <router-link to='/findme'><i class='far fa-hospital' style="font-size:30px;"></i></router-link>
         <b-card-text>Consulta toda la información de contacto y localización</b-card-text>
       </b-card>
       <b-card header="Publicaciones" class="text-center">

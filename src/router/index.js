@@ -6,6 +6,8 @@ import Dashboard from '@/components/Dashboard'
 import Signup from '@/components/Signup'
 import Help from '@/components/Help'
 import UserCreator from '@/components/UserCreator'
+import Findme from '@/components/Findme'
+
 Vue.use(Router)
 
 export default new Router({
@@ -39,6 +41,11 @@ export default new Router({
       path: '/register',
       name: 'UserGenerator',
       component: UserCreator
+    },
+    {
+      path: '/findme',
+      name: 'Findme',
+      component: Findme
     }
   ]
 })

@@ -18,7 +18,7 @@
       <b-card-text>Completa el formulario para continuar</b-card-text>
       <b-form method="POST" @submit.stop.prevent="sendUser">
         <label for="username">Email</label>
-        <input v-model="user.email" type="email" name="username" placeholder="Ingresa tu email" />
+        <input v-model="user.email" type="email" name="username" placeholder="Ingresa tu email" required />
         <label for="text-password">Password</label>
         <b-input
           v-model="user.password"
@@ -26,6 +26,7 @@
           id="text-password"
           aria-describedby="password-help-block"
           placeholder="Ingresa tu contraseña"
+          required
         ></b-input>
         <b-form-text id="password-help-block">
           Your password must be 8-20 characters long, contain letters and numbers, and must not
@@ -94,6 +95,7 @@ input{
   width: 100%;
   border-radius: 0.25rem;
   padding: 0.375rem 0.75rem;
+  color: black;
 }
 
 body{
