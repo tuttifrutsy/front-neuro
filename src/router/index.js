@@ -1,51 +1,71 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/components/Home'
-import Login from '@/components/Login'
-import Dashboard from '@/components/Dashboard'
-import Signup from '@/components/Signup'
-import Help from '@/components/Help'
-import UserCreator from '@/components/UserCreator'
-import Findme from '@/components/Findme'
+import Home from './views/Home.vue'
+import About from './views/About.vue'
+import Signup from './views/Signup.vue'
+import Login from './views/Login.vue'
+import Findme from './views/Findme.vue'
+import Dashboard from './views/Dashboard.vue'
+import MyBrain from './views/MyBrain.vue'
+import Neurogram from './views/Neurogram.vue'
+import Help from './views/Help'
+import UserCreator from './views/UserCreator.vue'
 
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
+  base: process.env.BASE_URL,neurocli
   routes: [
     {
       path: '/',
-      name: 'Home',
+      name: 'home',
       component: Home
     },
     {
-      path: '/login',
-      name: 'Login',
-      component: Login
-    },
-    {
-      path: '/dashboard',
-      name: 'Dashboard',
-      component: Dashboard
+      path: '/about',
+      name: 'about',
+      component: About
     },
     {
       path: '/signup',
-      name: 'Signup',
+      name: 'signup',
       component: Signup
     },
     {
+      path: '/login',
+      name: 'login',
+      component: Login
+    },
+    {
       path: '/help',
-      name: 'Help',
+      name: 'help',
       component: Help
     },
     {
+      path: '/findme',
+      name: 'findme',
+      component: Findme
+    },
+    {
+      path: '/dashboard',
+      name: 'dashboard',
+      component: Dashboard
+    },
+    {
       path: '/register',
-      name: 'UserGenerator',
+      name: 'register',
       component: UserCreator
     },
     {
-      path: '/findme',
-      name: 'Findme',
-      component: Findme
+      path: '/mybrain',
+      name: 'mybrain',
+      component: MyBrain
+    },
+    {
+      path: '/neurogram',
+      name: 'neurogram',
+      component: Neurogram
     }
   ]
 })

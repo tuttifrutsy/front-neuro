@@ -1,13 +1,6 @@
 <template>
   <div class="container">
     <!-- eslint-disable -->
-    <!-- <b-form  method="POST" @submit.stop.prevent="sendUser" >
-      <label for="username">Email</label>
-      <input  v-model="user.email" type="email" name="username" placeholder="Ingresa tu email"/>
-      <label for="password">Password</label>
-      <input v-model="user.password" type="password" name="password" id="password" />
-    <button type="submit">log in</button>
-    </b-form>-->
     <b-card
       header="Inicia Sesión"
       header-text-variant="white"
@@ -18,7 +11,7 @@
       <b-card-text>Completa el formulario para continuar</b-card-text>
       <b-form method="POST" @submit.stop.prevent="sendUser">
         <label for="username">Email</label>
-        <input v-model="user.email" type="email" name="username" placeholder="Ingresa tu email" required />
+        <input v-model="user.email" type="email" name="email" placeholder="Ingresa tu email" required />
         <label for="text-password">Password</label>
         <b-input
           v-model="user.password"
@@ -64,7 +57,7 @@ export default {
         data: JSON.stringify(this.user),
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json",
+          'Accept': "application/json",
           "Access-Control-Allow-Origin": "*"
         },
         json: true,
@@ -74,7 +67,7 @@ export default {
         .then(response => {
           this.user = response.data;
           // console.log("Exito",response.data)
-          this.$router.push("Dashboard");
+          this.$router.replace({ name: "TestProfile" });
         })
         .catch(error => console.log("error", error));
     }

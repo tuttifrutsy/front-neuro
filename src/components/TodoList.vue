@@ -4,7 +4,7 @@
   <div>
     <p>Completed Tasks: {{todos.filter(todo => {return todo.done === true}).length}}</p>
     <p>Pending Tasks: {{todos.filter(todo => {return todo.done === false}).length}}</p>
-    <Todo v-on:delete-todo="deleteTodo" v-on:complete-todo="completeTodo" v-for="todo in todos" :todo.sync="todo"/>
+    <Todo v-on:delete-todo="deleteTodo" v-on:complete-todo="completeTodo" v-for="todo in todos" v-bind:key="todo.id" :todo.sync="todo"/>
     </div>
   </div>
 

@@ -138,7 +138,7 @@
 <script>
 /* eslint-disable */
 export default {
-  name: "App",
+  name: 'App',
   data() {
     return {
       show: false

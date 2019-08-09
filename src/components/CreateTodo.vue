@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     openForm() {
-      this.isCreating = true
+      this.isCreating = true;
     },
     closeForm() {
       this.isCreating = false

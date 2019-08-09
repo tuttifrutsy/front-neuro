@@ -1,114 +1,122 @@
 <template>
-<!-- eslint-disable -->
-  <div>
-      <div> {{user.msg}} </div>
-      <div>
-    <h2>My Brain Healty</h2>
-    <div class="card">
-        <img :src="user.image" alt="">
-        <h3 class="title">{{user.nombre.name}}</h3>
+  <!-- eslint-disable -->
+  <div class="container">
+    <h2>My brain Healty</h2>
+    <div>
+      <div class="card">
+        <img :src="user.image" alt />
+        <h1 class="title">{{user.nombre.name}}</h1>
         <span>Diágnostico {{user.dx}}</span>
         <span>Alergias</span>
         <ul v-for="alergies in user.alergy">
-            <li> {{alergies}} </li>
+          <li>{{alergies}}</li>
         </ul>
         <div>
-        <button><i class='fas fa-prescription'></i></button>
-        <button><i class='fas fa-medkit'></i></button>
-        <button><i class='fas fa-stethoscope'></i></button>
-        <button><i class='fas fa-heartbeat'></i></button>
+          <button>
+            <i class="fas fa-prescription"></i>
+          </button>
+          <button>
+            <i class="fas fa-medkit"></i>
+          </button>
+          <button>
+            <i class="fas fa-stethoscope"></i>
+          </button>
+          <button>
+            <i class="fas fa-heartbeat"></i>
+          </button>
+       
         </div>
+
+      <div class="card" >
+      <h4>Actualizar Datos</h4>
+      <form action method="POST" v-on:submit.prevent="changeUser">
+        <input name="name" type="text" v-model="user.name" placeholder="Nombre" />
+        <input name="firstname" type="text" v-model="user.firstname" placeholder="Apellido Paterno" />
+        <input name="lastname" type="text" v-model="user.lastname" placeholder="Apellido Materno" />
+        <input name="age" type="number" v-model="user.age" placeholder="Edad" />
+        <input name="alergy" type="text" v-model="user.alergy" placeholder="Alergias" />
+        <div>
+        <b-button type="submit"><i class='fas fa-save'></i></b-button>
+       
+        </div>
+      </form>
     </div>
-    <!-- <div>
-        <ul v-for="medicamento in user.medicamentos">
-            <li>{{medicamento}}</li>
-        </ul>
-    </div>
-      <div>
-        <ul v-for="estudios in user.estudios">
-            <li>{{estudio}}</li>
-        </ul>
-    </div>
-      <div>
-        <ul v-for="cita in user.citas">
-            <li>{{cita}}</li>
-        </ul>
-    </div> -->
-     
+
       </div>
-      <TodoList v-bind:todos="todos"/>
-      <CreateTodo v-on:create-todo="createTodo" />
-  </div>
+
+      </div>
+   
+    <List />
+    </div>
 </template>
 <script>
 /* eslint-disable */
-import sweetalert from 'sweetalert'
-import CreateTodo from './CreateTodo'
-import TodoList from './TodoList'  
-import router from '../main'
-import axios from 'axios'
-export default {
-    name: 'Dashboard',
-    components: {
-        TodoList,
-        CreateTodo
-    },
-    data () {
-        return {
-            user: {},
-            todos: [{
-                title: 'todo A',
-                description: 'Description A',
-                done: false,
-            },
-            {
-                title: 'El b',
-                description: 'Description b',
-                done: false,
-            },
-            {
-                title: 'El c',
-                description: 'Description c',
-                done: false,
-            },
-            {
-                title: 'El d',
-                description: 'Description d',
-                done: true,
-            }
-            ]
-        };
-    },
-    created () {
-        this.getUser();
-    },
-    methods: {      
-         createTodo(newTodo) {
-             this.todos.push(newTodo);
-             sweetalert('Succces', 'To-do Created!', 'success')
-         },
-         getUser() {
-            // fetch('http://localhost:3000/patient')
-            // .then(res => res.json())
-            // .then(data => console.log(data));
-            const authOptions = {
-                method: 'GET',
-                url: 'http://localhost:3000/patient',
-                headers: {
-                    'Accept': 'application/json',
-                },
-                json: true,
-                withCredentials: true
-            };
-            axios(authOptions)
-            .then(response => {
-                this.user = response.data})
-            .catch(err => console.log(err))
-        },
-       
-
-    }
+import List from "./List.vue";
+crm "../main";
+import axios from "axios";
+class editUser {
+  constructor(name, firstname, lastname, age, alergy) {
+    this.name = name;
+    this.firstname = firstname;
+    this.lastname = lastname;
+    this.age = age;
+    this.alergy = alergy;
+  }
 }
+export default {
+  name: 'Dashboard',
+  components: {
+    List,
+  },
+  data() {
+    return {
+      user: {},
+      
+    };
+  },
+  created() {
+    this.getUser();
+    
+  },
+  methods: {
+    getUser() {
+      const authOptions = {
+        method: "GET",
+        url: "http://localhost:3000/patient",
+        headers: {
+          Accept: "application/json"
+        },
+        json: true,
+        withCredentials: true
+      };
+      axios(authOptions)
+        .then(response => {
+          this.user = response.data;
+        })
+        .catch(err => console.log(err));
+    },
+    openForm(){
+    this.isEditing = true
+  },
+  closeForm() {
+    this.isEditing = false
+  },
+  changeUser() {
+      fetch("http://localhost:3000/edit", {
+        method: "POST",
+        body: JSON.stringify(this.editUser),
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        }
+      })
+        .then(res => res.json())
+        .then(data => console.log(data));
+      sweetalert('Bienvenid@!', 'Se ha creado tu cuenta.', 'success')
+      this.editUser = new editUser();
+    }
+  }
+};
 </script>
 <style scoped>
 .card {
@@ -123,11 +131,12 @@ export default {
 
 .title {
   color: grey;
-  font-size: 18px;
+  padding: 2%;
 }
 
 button {
   border: none;
+  border-radius: 4px;
   outline: 0;
   display: inline-block;
   padding: 8px;
@@ -136,7 +145,7 @@ button {
   background-color: #000;
   text-align: center;
   cursor: pointer;
-  width: 23%;
+  width: 18%;
   font-size: 18px;
 }
 
@@ -146,9 +155,9 @@ a {
   color: black;
 }
 
-button:hover, a:hover {
+button:hover,
+a:hover {
   opacity: 0.7;
 }
+
 </style>
-
-

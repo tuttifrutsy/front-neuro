@@ -15,7 +15,7 @@
 import Slider from "./Slider.vue";
 import Cards from "./Cards.vue";
 export default {
-  name: "Principal",
+  name: 'Home',
   components: {
     Slider,
     Cards
